@@ -1,26 +1,316 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand */
+  --color-brand: #aaff00;
+  --color-brand-hover: #c8ff4d;
+  --color-dark-bg: #0a0a0a;
+  --color-card-bg: #111111;
+
+  /* Fonts */
+  --font-sans: var(--font-english), ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: "Cairo", sans-serif;
+  --font-heading: var(--font-english), ui-sans-serif, system-ui, sans-serif;
+
+  /* Radius */
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+  --background: #000000;
+  --foreground: #F8F8F8;
+
+  --card: #090909;
+  --card-foreground: #F4F4F4;
+
+  --popover: #111111;
+  --popover-foreground: #F4F4F4;
+
+  --primary: #AAFF00;
+  --primary-foreground: #000000;
+
+  --secondary: #1C1C1C;
+  --secondary-foreground: #F4F4F4;
+
+  --muted: #1B1B1B;
+  --muted-foreground: #AFAFAF;
+
+  --accent: #AAFF00;
+  --accent-foreground: #000000;
+
+  --destructive: #F04438;
+
+  --border: rgba(255, 255, 255, 0.12);
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: rgba(170, 255, 0, 0.45);
+
+  --radius: 1rem;
+
+  --font-english: "Neue June", sans-serif;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--background);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(to bottom,
+        transparent,
+        rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+
+  --destructive: oklch(0.704 0.191 22.216);
+
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+}
+@layer componets{
+    .hero-nav-pill {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 8px 24px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+}
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+}
+
+@font-face {
+  font-family: "Neue June";
+  src: local("Neue June");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "qatarArabic";
+  src: local("qatarArabic");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+}
+
+.stars-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+
+
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 9999px;
+  opacity: 0.5;
+
+  animation: twinkle var(--duration, 3s) infinite ease-in-out var(--delay, 0s);
+}
+
+.font-english {
+  --font-sans: var(--font-english);
+  --font-heading: var(--font-english);
+  font-family: var(--font-english);
+}
+
+.font-arabic {
+  --font-sans: var(--font-arabic);
+  --font-heading: var(--font-arabic);
+  font-family: var(--font-arabic);
+}
+
+.font-heading {
+  font-family: var(--font-heading) !important;
+}
+
+body.font-arabic,
+body.font-arabic * {
+  font-family: var(--font-sans) !important;
+}
+
+
+
+
+
+/* Animation for Stars in Testimonials */
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.5);
+  }
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+  opacity: 0.5;
+}
+
+/* Accordion Transition override for smoother animation */
+.accordion-content {
+  transition: grid-template-rows 0.3s ease-out;
+  display: grid;
+  grid-template-rows: 0fr;
+}
+
+.accordion-content[data-state="open"] {
+  grid-template-rows: 1fr;
+}
+
+.accordion-inner {
+  overflow: hidden;
+}
+
+/* Add to your global.css or component CSS module */
+@media (max-width: 640px) {
+  .carousel-item-responsive {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  .carousel-item-responsive {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .carousel-item-responsive {
+    flex: 0 0 33.333% !important;
+    max-width: 33.333% !important;
+  }
+}
+/* For Arabic language card height */
+[dir="rtl"] .project-card {
+  min-height: 700px;
+}
+
+/* For English/LTR */
+[dir="ltr"] .project-card {
+  min-height: 650px;
 }

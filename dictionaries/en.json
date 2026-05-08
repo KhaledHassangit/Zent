@@ -1,0 +1,224 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About us",
+    "services": "Services",
+    "works": "Our Works",
+    "faqs": "FAQS",
+    "contact": "Contact Us",
+    "language": "AR"
+  },
+  "hero": {
+    "heading": "Accelerating digital \nchange with innovative software!",
+    "description": "We design and develop world-class SaaS platforms, web apps, and digital products that drive growth and delight users.",
+    "cta_primary": "Contact Us",
+    "cta_secondary": "View Our Work",
+    "social_label": "Visit our social media"
+  },
+  "brands": {
+    "heading": "Meet our customers",
+    "description": "Helping best teams succeed, from new startups to big companies."
+  },
+  "about": {
+    "label": "About Us",
+    "heading": "We Build Digital \nProducts That \nDefine Industries",
+    "description": "With over 8 years of experience, we've partnered with startups and enterprises to transform ideas into market-leading digital products.",
+    "cta": "Company Profile",
+    "stats": {
+      "experience_value": "8+",
+      "experience_label": "Years of Experience",
+      "experience_desc": "Delivering creative and technical solutions",
+      "clients_value": "40+",
+      "clients_label": "Happy Clients",
+      "clients_desc": "Brands that trusted us to bring their vision to life"
+    },
+    "body_para1": "With over 8 years of experience, we've partnered with startups and enterprises to transform ideas into market-leading digital products.",
+    "body_para2": "Zent is a premium digital product studio specializing in SaaS platforms, web applications, and mobile experiences. We combine strategic thinking, cutting-edge design, and robust engineering to deliver products that scale."
+  },
+  "services": {
+    "label": "Services",
+    "heading": "End-to-End Digital Product Solutions",
+    "description": "From concept to launch and beyond, we provide everything you need to build successful digital products.",
+    "items": [
+      {
+        "title": "UX/UI Design",
+        "description": "We craft intuitive and engaging interfaces that drive user satisfaction and business growth.",
+        "tags": [
+          "User research",
+          "Wireframes",
+          "Prototyping"
+        ]
+      },
+      {
+        "title": "Mobile Apps",
+        "description": "High-performance native and cross-platform applications built for iOS and Android.",
+        "tags": [
+          "Native",
+          "IOS",
+          "Android"
+        ]
+      },
+      {
+        "title": "Web Development",
+        "description": "Scalable and secure web solutions using modern frameworks and best practices.",
+        "tags": [
+          "User research",
+          "Wireframes",
+          "Ui components"
+        ]
+      }
+    ]
+  },
+  "why": {
+    "label": "WhyZent",
+    "heading": "Digital Excellence\nYour Partner in",
+    "description": "We're not just another agency. We're your strategic partner in building products that define markets and delight users.",
+    "checklist": [
+      {
+        "title": "Product-First Mindset",
+        "description": "We think like product owners, not just service providers. Every decision is driven by user value and business impact."
+      },
+      {
+        "title": "Built for Scale",
+        "description": "Our architecture and design systems are engineered to grow with your business, from MVP to enterprise."
+      },
+      {
+        "title": "Expert Team",
+        "description": "Senior designers, developers, and product strategists with proven track records in SaaS and digital products."
+      }
+    ],
+    "features": [
+      {
+        "icon": "trending-up",
+        "title": "Results-Driven",
+        "description": "We measure success by your metrics: user engagement, conversion rates, and revenue growth."
+      },
+      {
+        "icon": "shield-check",
+        "title": "Quality Guaranteed",
+        "description": "Rigorous testing, code reviews, and quality assurance ensure every delivery meets the highest standards."
+      }
+    ],
+    "stat_value": "98%",
+    "stat_label": "Client Satisfaction Rate"
+  },
+  "projects": {
+    "label": "Projects",
+    "heading": "Work That Speaks For Itself",
+    "description": "We blend creativity, technology, and strategy to deliver powerful solutions that elevate your brand",
+    "cta": "View ALL Work",
+    "items": [
+      {
+        "type": "Website",
+        "title": "Saudi Media Forum",
+        "description": "One of our unique experiences in the Saudi market, in which we demonstrated some of our skills in establishing and developing websites.",
+        "tags": [
+          "UX/UI Design",
+          "iOS & Android",
+          "Backend"
+        ],
+        "cta": "View Project"
+      },
+      {
+        "type": "Mobile App",
+        "title": "Expense Sharing App",
+        "description": "Our app makes splitting bills a breeze. You can easily divide expenses among friends without the hassle.",
+        "tags": [
+          "UX/UI Design",
+          "iOS & Android",
+          "Backend"
+        ],
+        "cta": "View Project"
+      }
+    ]
+  },
+  "testimonials": {
+    "label": "Testimonial",
+    "heading": "What Our Clients Say",
+    "description": "Experience the future of recruitment with AI-powered automation.",
+    "items": [
+      {
+        "quote": "\"Palm UI helped us move from messy drafts to polished pages in days. Every section feels purposeful and beautifully designed—plus it's so easy to tweak for our brand. We now ship twice as fast and look twice as good.\"",
+        "name": "Samantha Lee",
+        "role": "Design Head @ Google"
+      },
+      {
+        "quote": "\"The team at Zent Studio delivered beyond our expectations. Their attention to detail and product-first approach made all the difference in our launch.\"",
+        "name": "Ahmed Al-Rashid",
+        "role": "CEO @ TechFlow"
+      },
+      {
+        "quote": "\"Working with Zent was a game-changer. They understood our vision immediately and translated it into a stunning digital product.\"",
+        "name": "Maria Santos",
+        "role": "Product Manager @ Innovate Co."
+      },
+      {
+        "quote": "\"Exceptional quality, on-time delivery, and outstanding communication throughout the entire project. Highly recommend!\"",
+        "name": "James Wilson",
+        "role": "CTO @ StartupHub"
+      }
+    ]
+  },
+  "faq": {
+    "label": "FAQ",
+    "heading": "Frequently Asked Questions",
+    "description": "We blend creativity, technology, and strategy to deliver powerful solutions that elevate your brand in the digital world.",
+    "still_questions_title": "Still have questions?",
+    "still_questions_body": "Our team is here to help. Let's chat about your project.",
+    "cta": "Contact Us",
+    "items": [
+      {
+        "question": "Where do candidates come from?",
+        "answer": "Lokerly aggregates data from public professional networks, your existing database, and applicant submissions."
+      },
+      {
+        "question": "What technologies do you work with?",
+        "answer": "We work with the latest web and mobile technologies including React, Next.js, React Native, Flutter, Node.js, and many more."
+      },
+      {
+        "question": "How long does a typical project take?",
+        "answer": "Project timelines vary depending on scope and complexity. A typical MVP takes 6-12 weeks, while a full-scale product can take 3-6 months."
+      },
+      {
+        "question": "Do you offer post-launch support?",
+        "answer": "Yes! We offer comprehensive post-launch support and maintenance packages to ensure your product stays healthy and up-to-date."
+      },
+      {
+        "question": "What is your pricing model?",
+        "answer": "We offer both fixed-price and time-and-materials pricing models depending on your project needs. Contact us for a custom quote."
+      },
+      {
+        "question": "Can you work with our existing team?",
+        "answer": "Absolutely. We frequently embed our specialists within client teams to augment capacity and accelerate delivery."
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "Accelerating Digital Change With Innovative Software",
+    "copyright": "© 2026 Zent Studio. All rights reserved.",
+    "social_links": [
+      {
+        "name": "Behance",
+        "platform": "behance",
+        "href": "#"
+      },
+      {
+        "name": "LinkedIn",
+        "platform": "linkedin",
+        "href": "#"
+      },
+      {
+        "name": "Instagram",
+        "platform": "instagram",
+        "href": "#"
+      }
+    ]
+  },
+  "pixels_example": {
+    "label": "Ready to Build Something Amazing?",
+    "heading_start": "Let's Build Your Next",
+    "heading_accent": "Digital Product",
+    "cta_main": "Book Free Consultation",
+    "email": "hello@zent.io"
+  }
+}
