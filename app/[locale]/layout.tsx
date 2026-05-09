@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Cairo } from "next/font/google";
 import { getDictionary, isValidLocale } from "@/lib/i18n";
 import type { Locale } from "@/types/types";
+import { Suspense } from "react";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import "../globals.css";
@@ -83,7 +84,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       className={`${isRTL ? "font-arabic" : "font-english"} ${cairo.variable}`}
     >
       <body className={`min-h-full flex flex-col bg-black text-white antialiased ${isRTL ? "font-arabic" : "font-english"}`}>
-        <Navbar dict={dict} locale={locale as Locale} />
+        <Suspense fallback={null}>
+          <Navbar dict={dict} locale={locale as Locale} />
+        </Suspense>
         <main id="main-content" className="flex-1 overflow-hidden">
           {children}
         </main>
