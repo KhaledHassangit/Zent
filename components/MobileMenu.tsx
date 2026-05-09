@@ -1,19 +1,8 @@
+import { MobileMenuProps } from "@/types/types";
 import UIButton from "@/util/UIButton";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { X, ArrowUpRight } from "lucide-react";
-
-export type Locale = "en" | "ar";
-
-interface MobileMenuProps {
-    isOpen: boolean;
-    onClose: () => void;
-    links: { label: string; href: string }[];
-    active: string;
-    onSelect: (href: string) => void;
-    locale: Locale;
-    contactLabel: string;
-    dict: any;
-}
+import MotionDiv from "@/util/MotionDiv"; 
 
 export default function MobileMenu({
     isOpen,
@@ -25,9 +14,9 @@ export default function MobileMenu({
     contactLabel,
     dict,
 }: MobileMenuProps) {
-    // English -> slide from right; Arabic -> slide from left
     const fromRight = locale === "en";
     const xHidden = fromRight ? "100%" : "-100%";
+
 
     const containerVariants = {
         hidden: {},
@@ -41,7 +30,11 @@ export default function MobileMenu({
 
     const itemVariants = {
         hidden: { opacity: 0, x: fromRight ? 40 : -40 },
-        visible: { opacity: 1, x: 0, transition: { type: "spring" as const, stiffness: 260, damping: 24 } },
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: { type: "spring" as const, stiffness: 260, damping: 24 },
+        },
         exit: { opacity: 0, x: fromRight ? 40 : -40, transition: { duration: 0.15 } },
     };
 
@@ -49,7 +42,8 @@ export default function MobileMenu({
         <AnimatePresence>
             {isOpen && (
                 <>
-                    <motion.div
+                    {/* ── Backdrop ──────────────────────────────────────────── */}
+                    <MotionDiv
                         key="backdrop"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -58,8 +52,11 @@ export default function MobileMenu({
                         onClick={onClose}
                         className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
                     />
-                    <motion.aside
+
+                    {/* ── Side panel ────────────────────────────────────────── */}
+                    <MotionDiv
                         key="panel"
+                        as="aside"
                         dir={locale === "ar" ? "rtl" : "ltr"}
                         initial={{ x: xHidden }}
                         animate={{ x: 0 }}
@@ -67,8 +64,11 @@ export default function MobileMenu({
                         transition={{ type: "spring", stiffness: 220, damping: 30 }}
                         className={`fixed top-0 ${fromRight ? "right-0" : "left-0"} z-50 h-screen w-[82%] max-w-[360px] bg-[#0a0a0a] border-${fromRight ? "l" : "r"} border-white/10 flex flex-col md:hidden`}
                     >
+                        {/* Header */}
                         <div className="flex items-center justify-between p-5 border-b border-white/10">
-                            <span className="text-white/80 text-sm tracking-[0.2em] uppercase">Menu</span>
+                            <span className="text-white/80 text-sm tracking-[0.2em] uppercase">
+                                Menu
+                            </span>
                             <button
                                 onClick={onClose}
                                 aria-label="Close menu"
@@ -78,7 +78,9 @@ export default function MobileMenu({
                             </button>
                         </div>
 
-                        <motion.nav
+                        {/* ── Nav list (stagger container) ──────────────────── */}
+                        <MotionDiv
+                            as="nav"
                             variants={containerVariants}
                             initial="hidden"
                             animate="visible"
@@ -88,41 +90,45 @@ export default function MobileMenu({
                             {links.map((link) => {
                                 const isActive = active === link.href;
                                 return (
-                                    <motion.a
+                                    // ── Nav item (stagger child) ──────────────
+                                    <MotionDiv
                                         key={link.href}
+                                        as="a"
                                         href={link.href}
                                         variants={itemVariants}
-                                        onClick={(e) => {
+                                        onClick={(e: React.MouseEvent) => {
                                             e.preventDefault();
                                             onSelect(link.href);
                                             onClose();
                                         }}
-                                        className={`group flex items-center justify-between px-4 py-4 rounded-2xl border transition-colors ${isActive
+                                        className={`group flex items-center justify-between px-4 py-4 rounded-2xl border transition-colors ${
+                                            isActive
                                                 ? "bg-[rgba(37,48,21,0.9)] border-[#253015] text-[#EAFFE1]"
                                                 : "border-transparent text-white/85 hover:bg-white/[0.04]"
-                                            }`}
+                                        }`}
                                     >
-                                        <span className="text-[18px] font-medium tracking-tight">{link.label}</span>
+                                        <span className="text-[18px] font-medium tracking-tight">
+                                            {link.label}
+                                        </span>
                                         <ArrowUpRight
                                             size={18}
                                             className="opacity-0 -translate-x-1 group-hover:opacity-70 group-hover:translate-x-0 transition-all"
                                         />
-                                        
-                                    </motion.a>
+                                    </MotionDiv>
                                 );
                             })}
 
-                            <motion.div variants={itemVariants} className="mt-6" onClick={onClose}>
-                               
-                                    <UIButton href="/#contact" label={contactLabel} locale={locale} /> 
-                                
-                            </motion.div>
-                        </motion.nav>
+                            {/* ── CTA button (stagger child) ────────────────── */}
+                            <MotionDiv variants={itemVariants} className="mt-6" onClick={onClose}>
+                                <UIButton href="/#contact" label={contactLabel} locale={locale} />
+                            </MotionDiv>
+                        </MotionDiv>
 
+                        {/* Footer */}
                         <div className="p-5 border-t border-white/10 text-xs text-white/40">
                             {dict.footer.copyright}
                         </div>
-                    </motion.aside>
+                    </MotionDiv>
                 </>
             )}
         </AnimatePresence>

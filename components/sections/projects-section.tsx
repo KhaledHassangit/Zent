@@ -1,7 +1,5 @@
-"use client";
 
-import type { Dictionary, Locale } from "@/types/types";
-import type { Project } from "@/types/projects";
+import {ProjectsSectionProps } from "@/types/types";
 import Container from "@/util/Container";
 import Image from "next/image";
 import {
@@ -12,24 +10,11 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import UIButton from "@/util/UIButton";
+import Link from "@/util/link";
 
-interface ProjectsSectionProps {
-  dict: Dictionary;
-  locale: Locale;
-  projects: Project[];
-}
 
-// Static local images mapped by index as a visual fallback pattern
-const localImages = [
-  "/assets/p1.png",
-  "/assets/p2.png",
-  "/assets/p3.png",
-  "/assets/p4.png",
-];
 
 export default function ProjectsSection({ dict, projects, locale }: ProjectsSectionProps) {
-  // Show up to 4 projects in the carousel
-  const displayProjects = projects.slice(0, 4);
 
   return (
     <section
@@ -54,25 +39,20 @@ export default function ProjectsSection({ dict, projects, locale }: ProjectsSect
               <p className="whitespace-pre-line text-[#a3a3a3] text-sm md:text-base">
                 {dict.projects.description}
               </p>
-              <a
+              <Link
                 href="#"
                 className="
                   relative isolate inline-flex h-12 w-fit max-w-full shrink-0
                   items-center gap-3 overflow-hidden rounded-[42px]
                   border border-[#ffffff38]
                   bg-[#0000001a]
-                  px-[18px] py-1
-                  text-[15px] font-medium leading-[21px] text-white
+                  px-4.5 py-1
+                  text-[15px] font-medium leading-5.25 text-white
                   backdrop-blur-[2px]
-                  backdrop-saturate-[118%]
-                  backdrop-brightness-[1.02]
-                  transition-[filter,transform]
-                  hover:brightness-110
-                  active:scale-[0.99]
-                "
+                  transition-colors duration-300"
               >
                 {dict.projects.cta}
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -86,7 +66,7 @@ export default function ProjectsSection({ dict, projects, locale }: ProjectsSect
               className="w-full"
             >
               <CarouselContent className="-ml-4">
-                {displayProjects.map((project, index) => (
+                {projects.map((project, index) => (
                   <CarouselItem
                     key={project.id}
                     className="pl-4 md:basis-1/2 lg:basis-1/2"
@@ -107,7 +87,7 @@ export default function ProjectsSection({ dict, projects, locale }: ProjectsSect
                         <div className="relative z-1 w-full shrink-0 max-md:h-[260px] md:h-[320px] xl:h-[360px] mb-8">
                           <div className="relative h-full w-full overflow-hidden rounded-ts-[32px] rounded-te-[32px] rounded-bs-[22px] rounded-be-[22px]">
                             <Image
-                              src={project.thumbnail?.url || localImages[index % localImages.length]}
+                              src={project.thumbnail?.url}
                               alt={project.thumbnail?.alt || project.title}
                               fill
                               className="object-cover w-full h-full rounded-[24px]"
@@ -165,34 +145,9 @@ export default function ProjectsSection({ dict, projects, locale }: ProjectsSect
 
               {/* Navigation buttons under the cards */}
               <div className="flex justify-center gap-4 mt-12">
-                <CarouselPrevious
-                  className="static transform-none text-white border-white/10 hover:bg-white/5 hover:border-white/20"
-                  style={{
-                    width: "48px",
-                    height: "48px",
-                    paddingTop: "4px",
-                    paddingRight: "16px",
-                    paddingBottom: "4px",
-                    paddingLeft: "16px",
-                    gap: "12px",
-                    borderRadius: "42px",
-                    opacity: 1,
-                  }}
-                />
-                <CarouselNext
-                  className="static transform-none text-white border-white/10 hover:bg-white/5 hover:border-white/20"
-                  style={{
-                    width: "48px",
-                    height: "48px",
-                    paddingTop: "4px",
-                    paddingRight: "16px",
-                    paddingBottom: "4px",
-                    paddingLeft: "16px",
-                    gap: "12px",
-                    borderRadius: "42px",
-                    opacity: 1,
-                  }}
-                />
+                              <CarouselPrevious className="text-white border-white/10 hover:bg-white/5 hover:border-white/20 flex items-center justify-center w-12 h-12 rounded-[42px] !static !inset-auto !translate-x-0 !translate-y-0" />
+                <CarouselNext className="text-white border-white/10 hover:bg-white/5 hover:border-white/20 flex items-center justify-center w-12 h-12 rounded-[42px] !static !inset-auto !translate-x-0 !translate-y-0" />
+
               </div>
             </Carousel>
           </div>

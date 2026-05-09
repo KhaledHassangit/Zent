@@ -1,25 +1,20 @@
-"use client"
-import type { Dictionary } from "@/lib/types";
 import Container from "@/util/Container";
 import { CheckCheck, TrendingUp, ShieldCheck } from "lucide-react";
-
-interface WhySectionProps {
-   dict: Dictionary;
-}
+import {SectionProps} from "@/types/types";
 
 const iconMap = {
    "trending-up": TrendingUp,
    "shield-check": ShieldCheck,
 } as const;
 
-export default function WhySection({ dict }: WhySectionProps) {
+export default function WhySection({ dict }: SectionProps) {
    const w = dict.why;
 
    return (
       <section id="why-zent" className="relative w-full bg-black px-4 py-5 md:px-[50px] md:py-[60px] xl:px-[100px]">
          <Container className="mx-auto flex max-w-[1440px] flex-col gap-[40px] lg:flex-row">
 
-            {/* LEFT COLUMN */}
+            {/* Left Side */}
             <div className="flex min-w-0 flex-1 flex-col gap-[40px]">
                <div className="flex flex-col gap-[12px]">
                   <p className="text-[15.5px] font-medium leading-[19.2px] text-primary">{w.label}</p>
@@ -51,7 +46,7 @@ export default function WhySection({ dict }: WhySectionProps) {
                </div>
             </div>
 
-            {/* RIGHT COLUMN */}
+            {/* Right Side */}
             <div className="flex w-full flex-col gap-[13px] lg:w-[633px] lg:shrink-0">
                {w.features.map((feature, index) => {
                   const Icon = iconMap[feature.icon as keyof typeof iconMap] || TrendingUp;
@@ -70,7 +65,6 @@ export default function WhySection({ dict }: WhySectionProps) {
                   );
                })}
 
-               {/* STATS CARD WITH BORDER BEAM - FIXED CENTERING */}
                <div
                   className="flex items-center md:h-[150px] justify-center rounded-[16px] border border-primary bg-primary/5 p-[18px] relative min-h-[120px]"
                   style={{
@@ -78,7 +72,6 @@ export default function WhySection({ dict }: WhySectionProps) {
                      borderImageSlice: 1
                   }}
                >
-                  {/* Animated Border */}
                   <div className="pointer-events-none md:h-[150px] absolute inset-0 rounded-[inherit] opacity-35">
                      <div className="absolute inset-0 rounded-[inherit]" style={{ padding: '0.5px', background: 'transparent', maskImage: 'linear-gradient(transparent, transparent), linear-gradient(white, white)', maskClip: 'padding-box, border-box', maskComposite: 'exclude', WebkitMaskComposite: 'xor' }}>
                         <div style={{ position: 'absolute', inset: '0', borderRadius: 'inherit', border: '0.5px solid transparent', backgroundImage: 'conic-gradient(from var(--angle, 0deg), transparent 0%, transparent 70%, #aaff00 85%, transparent 100%)', backgroundOrigin: 'border-box', WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)', WebkitMaskComposite: 'destination-out', maskComposite: 'exclude', animation: 'border-beam-spin 6s linear infinite' }}>

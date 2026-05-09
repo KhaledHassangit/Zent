@@ -1,8 +1,8 @@
-import type { Dictionary, Locale } from "./types";
+import type { Dictionary, Locale } from "@/types/types";
 
 const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
-  en: () => import("@/dictionaries/en.json").then((m) => m.default as Dictionary),
-  ar: () => import("@/dictionaries/ar.json").then((m) => m.default as Dictionary),
+  en: () => import("@/translations/en.json").then((m) => m.default as Dictionary),
+  ar: () => import("@/translations/ar.json").then((m) => m.default as Dictionary),
 };
 
 export async function getDictionary(locale: Locale): Promise<Dictionary> {

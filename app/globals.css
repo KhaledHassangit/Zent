@@ -305,12 +305,58 @@ body.font-arabic * {
     max-width: 33.333% !important;
   }
 }
-/* For Arabic language card height */
 [dir="rtl"] .project-card {
   min-height: 700px;
 }
 
 /* For English/LTR */
 [dir="ltr"] .project-card {
-  min-height: 650px;
+  min-height: 700px;
 }
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 15s linear infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: var(--twinkle-opacity); transform: scale(1); }
+  50%       { opacity: calc(var(--twinkle-opacity) * 0.1); transform: scale(0.4); }
+}
+
+@keyframes hero-line-in {
+  from { opacity: 0; transform: translateY(100%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+.animate-twinkle {
+  animation-name: twinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.animate-hero-line-in {
+  animation-name: hero-line-in;
+  animation-timing-function: cubic-bezier(.22,1,.36,1);
+  animation-fill-mode: both;
+}
+
+.animate-hero-fade-up {
+  animation-name: hero-fade-up;
+  animation-timing-function: cubic-bezier(.22,1,.36,1);
+  animation-fill-mode: both;
+}
+
