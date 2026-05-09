@@ -48,3 +48,11 @@ export const navLinksConfig = [
   { key: "works", href: "#works" },
   { key: "faqs", href: "#faqs" },
 ];
+
+export const serviceImages = [
+  "/assets/uiux.png",
+  "/assets/mobile.png",
+  "/assets/web.png",
+  "/assets/uiux.png",
+  "/assets/mobile.png",
+];

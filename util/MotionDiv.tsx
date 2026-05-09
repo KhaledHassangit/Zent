@@ -3,6 +3,16 @@
 import { motion, AnimatePresence, Variants, Transition, HTMLMotionProps } from "framer-motion";
 import React from "react";
 
+export const fadeInUp: Variants = {
+    hidden: { opacity: 0, y: 28 },
+    visible: { opacity: 1, y: 0 },
+};
+
+export const fadeIn: Variants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+};
+
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 export type MotionDivTag = "div" | "aside" | "nav" | "section" | "ul" | "li" | "span" | "a";

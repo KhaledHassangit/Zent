@@ -217,3 +217,19 @@ export interface LangSwitcherProps {
   locale: Locale;
   className?: string;
 }
+
+
+
+export interface ServicesSectionProps {
+  dict: Dictionary;
+  categories?: Category[];
+}
+export interface ServiceItem {
+  title: string;
+  description: string;
+  tags: string[];
+  image: string;
+}
+
+
+

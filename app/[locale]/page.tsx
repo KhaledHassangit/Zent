@@ -12,7 +12,6 @@ import BrandsSection from "@/components/sections/brands-section";
 import AboutSection from "@/components/sections/about-section";
 import { fetchCategories } from "@/services/categories";
 import { fetchProjects } from "@/services/projects";
-import LightRays from "@/components/effects/LightRays";
 
 interface PageProps {
   params: Promise<{ locale: string }>;

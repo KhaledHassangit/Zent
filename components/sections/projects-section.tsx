@@ -2,6 +2,7 @@
 import {ProjectsSectionProps } from "@/types/types";
 import Container from "@/util/Container";
 import Image from "next/image";
+import MotionDiv, { fadeInUp } from "@/util/MotionDiv";
 import {
   Carousel,
   CarouselContent,
@@ -17,10 +18,16 @@ import Link from "@/util/link";
 export default function ProjectsSection({ dict, projects, locale }: ProjectsSectionProps) {
 
   return (
-    <section
+    <MotionDiv
+      as="section"
       id="works"
       dir={locale === "ar" ? "rtl" : "ltr"}
       className="relative w-full overflow-hidden bg-black px-4 py-5 md:px-[50px] md:py-[60px] xl:px-[100px]"
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
       <Container>
         <div className="relative z-10 mx-auto max-w-[1440px]">
@@ -153,6 +160,6 @@ export default function ProjectsSection({ dict, projects, locale }: ProjectsSect
           </div>
         </div>
       </Container>
-    </section>
+    </MotionDiv>
   );
 }

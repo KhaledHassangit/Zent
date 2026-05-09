@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import MotionDiv, { fadeInUp } from "@/util/MotionDiv";
 import {
   Carousel,
   CarouselContent,
@@ -15,7 +16,16 @@ export default function TestimonialsSection({ dict, locale }: LocaleSectionProps
   const items = t.items.length >= 5 ? t.items : [...t.items, t.items[0]];
 
   return (
-    <section id="testimonials" className="bg-black py-24 md:py-32 text-white overflow-hidden relative">
+    <MotionDiv
+      as="section"
+      id="testimonials"
+      className="bg-black py-24 md:py-32 text-white overflow-hidden relative"
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+    >
       {/* Header */}
       <div className="mx-auto mb-16 flex max-w-3xl flex-col items-center gap-6 text-center relative">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] pointer-events-none">
@@ -99,6 +109,6 @@ export default function TestimonialsSection({ dict, locale }: LocaleSectionProps
           </div>
         </Carousel>
       </div>
-    </section>
+    </MotionDiv>
   );
 }

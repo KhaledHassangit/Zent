@@ -1,4 +1,5 @@
 import Container from "@/util/Container";
+import MotionDiv, { fadeInUp } from "@/util/MotionDiv";
 import { CheckCheck, TrendingUp, ShieldCheck } from "lucide-react";
 import {SectionProps} from "@/types/types";
 
@@ -11,7 +12,16 @@ export default function WhySection({ dict }: SectionProps) {
    const w = dict.why;
 
    return (
-      <section id="why-zent" className="relative w-full bg-black px-4 py-5 md:px-[50px] md:py-[60px] xl:px-[100px]">
+      <MotionDiv
+         as="section"
+         id="why-zent"
+         className="relative w-full bg-black px-4 py-5 md:px-[50px] md:py-[60px] xl:px-[100px]"
+         variants={fadeInUp}
+         initial="hidden"
+         whileInView="visible"
+         viewport={{ once: true, amount: 0.25 }}
+         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      >
          <Container className="mx-auto flex max-w-[1440px] flex-col gap-[40px] lg:flex-row">
 
             {/* Left Side */}
@@ -85,6 +95,6 @@ export default function WhySection({ dict }: SectionProps) {
                </div>
             </div>
          </Container>
-      </section>
+      </MotionDiv>
    )
 }

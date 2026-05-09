@@ -1,6 +1,7 @@
 
 import Container from "@/util/Container";
 import Image from "next/image";
+import MotionDiv, { fadeInUp } from "@/util/MotionDiv";
 import { SectionProps } from "@/types/types";
 import { FileDown, Group, UsersRound } from "lucide-react";
 
@@ -9,7 +10,16 @@ export default function AboutSection({ dict }: SectionProps) {
   const a = dict.about;
 
   return (
-    <section id="about" className="relative w-full overflow-hidden bg-black px-4 pt-4 pb-8 md:px-12.5 md:pt-24 md:pb-30 xl:px-25">
+    <MotionDiv
+      as="section"
+      id="about"
+      className="relative w-full overflow-hidden bg-black px-4 pt-4 pb-8 md:px-12.5 md:pt-24 md:pb-30 xl:px-25"
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+    >
       <Container className="relative z-10 mx-auto max-w-360 flex w-full flex-col gap-8 md:gap-16 lg:flex-row lg:items-stretch lg:justify-between xl:gap-24">
         <div className="relative flex flex-col gap-8 md:gap-16 lg:gap-20 lg:w-[45%] lg:shrink-0">
           <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-[320px] h-75.75 lg:-left-10 lg:w-114.5 lg:h-108.25 pointer-events-none">
@@ -99,6 +109,6 @@ export default function AboutSection({ dict }: SectionProps) {
         </div>
 
       </Container>
-    </section>
+    </MotionDiv>
   );
 }

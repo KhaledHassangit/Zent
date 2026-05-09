@@ -4,12 +4,21 @@ import Image from "next/image";
 import Container from "@/util/Container";
 import { SectionProps } from "@/types/types";
 import { logos } from "@/lib/data";
+import MotionDiv, { fadeInUp } from "@/util/MotionDiv";
 
 
 
 export default function BrandsSection({ dict }: SectionProps) {
   return (
-    <section className="bg-black text-white py-20 overflow-hidden">
+    <MotionDiv
+      as="section"
+      className="bg-black text-white py-20 overflow-hidden"
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+    >
       <Container>
         <div className="mb-16 text-center">
           <h2 className="mb-4 font-heading font-normal text-[32px] md:text-[50px] leading-[1.1] tracking-normal text-white">
@@ -42,6 +51,6 @@ export default function BrandsSection({ dict }: SectionProps) {
           </div>
         </div>
       </Container>
-    </section>
+    </MotionDiv>
   );
 }

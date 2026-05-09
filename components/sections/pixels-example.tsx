@@ -2,12 +2,21 @@ import Image from "next/image";
 import Link from "@/util/link";
 import Container from "@/util/Container";
 import UIButton from "@/util/UIButton";
+import MotionDiv, { fadeInUp } from "@/util/MotionDiv";
 import { LocaleSectionProps} from "@/types/types";
 
 export default function PixelsExample({ dict, locale }:LocaleSectionProps) {
   const p = dict.pixels_example;
   return (
-    <section className="bg-black py-12 md:py-20">
+    <MotionDiv
+      as="section"
+      className="bg-black py-12 md:py-20"
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+    >
       <Container>
         <div className="relative mx-auto w-full max-w-310 min-h-100 md:h-120 rounded-[32px] overflow-hidden py-12 md:py-0">
           <div className="absolute inset-0 z-0">
@@ -49,6 +58,6 @@ export default function PixelsExample({ dict, locale }:LocaleSectionProps) {
           </div>
         </div>
       </Container>
-    </section>
+    </MotionDiv>
   );
 }

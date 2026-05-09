@@ -5,7 +5,7 @@ import  { LocaleSectionProps } from "@/types/types";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-
+import MotionDiv, { fadeInUp } from "@/util/MotionDiv";
 
 
 export default function FaqSection({ dict, locale }: LocaleSectionProps) {
@@ -13,7 +13,16 @@ export default function FaqSection({ dict, locale }: LocaleSectionProps) {
    const [activeItem, setActiveItem] = useState("item-0"); 
 
    return (
-      <section id="faqs" className="relative w-full bg-black px-4 py-5 md:px-12.5 md:py-15 xl:px-25">
+      <MotionDiv
+         as="section"
+         id="faqs"
+         className="relative w-full bg-black px-4 py-5 md:px-12.5 md:py-15 xl:px-25"
+         variants={fadeInUp}
+         initial="hidden"
+         whileInView="visible"
+         viewport={{ once: true, amount: 0.25 }}
+         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      >
          <Container className="mx-auto flex max-w-360 flex-col gap-10 lg:flex-row lg:items-start lg:gap-10">
 
             {/* Left Side */}
@@ -131,6 +140,6 @@ export default function FaqSection({ dict, locale }: LocaleSectionProps) {
             </div>
 
          </Container>
-      </section>
+      </MotionDiv>
    )
 }

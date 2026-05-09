@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import Link from "@/util/link";
+import MotionDiv, { fadeInUp } from "@/util/MotionDiv";
 import type { LocaleSectionProps } from "@/types/types";
 import UIButton from "@/util/UIButton";
 import { socialLinks } from "@/lib/data";
@@ -15,23 +16,16 @@ export default function HeroSection({ dict, locale }: LocaleSectionProps) {
 
   return (
     <>
-      <style>{`
-        @keyframes hero-line-in {
-          from { opacity: 0; transform: translateY(100%); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes hero-fade-up {
-          from { opacity: 0; transform: translateY(20px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        .hero-line-in { animation: hero-line-in 0.75s cubic-bezier(.22,1,.36,1) both; }
-        .hero-fade-up { animation: hero-fade-up 0.7s  cubic-bezier(.22,1,.36,1) both; }
-      `}</style>
-
       {/* ── HERO SECTION ─────────────────────────────────────────── */}
-      <section
+      <MotionDiv
+        as="section"
         id="home"
         className="relative w-full min-h-screen bg-black overflow-hidden"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.25 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
         {/* Twinkling stars — full hero height, left + right */}
         <Stars />
@@ -51,28 +45,43 @@ export default function HeroSection({ dict, locale }: LocaleSectionProps) {
               >
                 {headingLines.map((line, index) => (
                   <span key={index} className="block overflow-hidden">
-                    <span
-                      className="block hero-line-in"
-                      style={{ animationDelay: `${0.05 + index * 0.13}s` }}
+                    <MotionDiv
+                      as="span"
+                      className="block"
+                      variants={fadeInUp}
+                      initial="hidden"
+                      animate="visible"
+                      transition={{ duration: 0.7, delay: 0.12 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
                     >
                       {line}
-                    </span>
+                    </MotionDiv>
                   </span>
                 ))}
               </h1>
             </div>
 
             {/* Description */}
-            <div className="max-w-[587px] hero-fade-up" style={{ animationDelay: "0.32s" }}>
+            <MotionDiv
+              className="max-w-[587px]"
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.7, delay: 0.36, ease: [0.22, 1, 0.36, 1] }}
+            >
               <p className="text-[13px] leading-[20.3px] md:text-[16px] md:leading-[23.27px] text-white/55">
                 {h.description}
               </p>
-            </div>
+            </MotionDiv>
 
             {/* CTA + Social row */}
-            <div
-              className="flex flex-col xl:flex-row justify-between xl:items-center w-full mt-6 gap-8 hero-fade-up"
-              style={{ animationDelay: "0.44s" }}
+            <MotionDiv
+              className="flex flex-col xl:flex-row justify-between xl:items-center w-full mt-6 gap-8"
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.7, delay: 0.48, ease: [0.22, 1, 0.36, 1] }}
             >
               {/* Buttons */}
               <div className="flex flex-row items-start gap-3">
@@ -103,11 +112,11 @@ export default function HeroSection({ dict, locale }: LocaleSectionProps) {
                   ))}
                 </div>
               </div>
-            </div>
+            </MotionDiv>
 
           </div>
         </div>
-      </section>
+      </MotionDiv>
 
       {/* Green glow below hero */}
       <div className="relative w-full pointer-events-none z-[3]">

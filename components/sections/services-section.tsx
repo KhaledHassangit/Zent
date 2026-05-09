@@ -1,32 +1,15 @@
 "use client"
 import { useRef, type MouseEvent } from "react";
 
+import  { ServicesSectionProps } from "@/types/types";
+import MotionDiv, { fadeInUp } from "@/util/MotionDiv";
 
-import type { Dictionary } from "@/types/types";
+import  { Category } from "@/types/types";
+import { serviceImages } from "@/lib/data";
 
-export interface ServiceItem {
-  title: string;
-  description: string;
-  tags: string[];
-  image: string;
-}
 
-import type { Category } from "@/types/projects";
 
-interface ServicesSectionProps {
-  dict: Dictionary;
-  categories?: Category[];
-}
-
-const serviceImages = [
-  "/assets/uiux.png",
-  "/assets/mobile.png",
-  "/assets/web.png",
-  "/assets/uiux.png",
-  "/assets/mobile.png",
-];
-
-function ServiceCard({ item, image }: { item: any; image: string }) {
+function ServiceCard({ item, image }: { item: { title: string; description: string; tags: string[] }; image: string }) {
   const ref = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -75,7 +58,6 @@ function ServiceCard({ item, image }: { item: any; image: string }) {
 export default function ServicesSection({ dict, categories = [] }: ServicesSectionProps) {
   const s = dict.services;
 
-  // Merge categories from API with descriptions from dictionary
   const displayItems = categories.length > 0 
     ? categories.map((cat, index) => {
         const dictItem = s.items[index % s.items.length];
@@ -88,9 +70,15 @@ export default function ServicesSection({ dict, categories = [] }: ServicesSecti
     : s.items;
 
   return (
-    <section
+    <MotionDiv
+      as="section"
       id="services"
       className="relative w-full bg-black px-4 py-5 md:px-[50px] md:py-[60px] xl:px-[100px]"
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="mx-auto max-w-[1440px]">
         <div className="flex w-full flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
@@ -113,6 +101,6 @@ export default function ServicesSection({ dict, categories = [] }: ServicesSecti
           ))}
         </div>
       </div>
-    </section>
+    </MotionDiv>
   );
 }
