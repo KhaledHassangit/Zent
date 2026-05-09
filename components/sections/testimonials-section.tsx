@@ -54,7 +54,7 @@ export default function TestimonialsSection({ dict, locale }: TestimonialsSectio
           }}
           className="w-full"
         >
-          <CarouselContent className="-ml-6 md:-ml-8 gap-6">
+          <CarouselContent className="-ml-6 md:-ml-8 gap-4">
             {items.map((item, index) => (
               <CarouselItem
                 key={index}
