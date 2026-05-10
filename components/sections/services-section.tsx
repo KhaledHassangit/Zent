@@ -6,6 +6,7 @@ import MotionDiv, { fadeInUp } from "@/util/MotionDiv";
 
 import  { Category } from "@/types/types";
 import { serviceImages } from "@/lib/data";
+import { SectionHeader } from "@/util/SectionHeader";
 
 
 
@@ -83,12 +84,12 @@ export default function ServicesSection({ dict, categories = [] }: ServicesSecti
       <div className="mx-auto max-w-[1440px]">
         <div className="flex w-full flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="flex flex-col gap-4 lg:max-w-[587px]">
-            <p className="text-[15.5px] font-medium leading-[19.2px] tracking-[-1px] text-[#aaff00]">
-              {s.label}
-            </p>
-            <h2 className="max-w-[587px] text-[36px] font-medium leading-[42px] tracking-[-1px] text-white md:tracking-[-2px] lg:text-[42px] lg:leading-[44px] xl:text-[56px] xl:leading-[58.6px] font-heading">
-              {s.heading}
-            </h2>
+        <SectionHeader 
+  label={s.label}
+  heading={s.heading}
+  labelClassName="text-[#aaff00]"
+  headingClassName="max-w-[587px]"
+/>
           </div>
           <p className="whitespace-pre-line text-sm font-normal leading-normal text-neutral-400 md:text-base lg:w-1/3 lg:shrink-0">
             {s.description}

@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/carousel";
 import UIButton from "@/util/UIButton";
 import Link from "@/util/link";
+import { SectionHeader } from "@/util/SectionHeader";
 
 
 
@@ -33,14 +34,12 @@ export default function ProjectsSection({ dict, projects, locale }: ProjectsSect
         <div className="relative z-10 mx-auto max-w-[1440px]">
           <div className={`flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between ${locale === "ar" ? "lg:flex-row-reverse" : ""}`}>
             <div className="flex flex-col gap-4">
-              <p className="text-[15.5px] font-medium leading-[19.2px] text-primary">
-                {dict.projects.label}
-              </p>
-              <div className="w-full">
-                <h2 className="text-[36px] leading-[42px] lg:text-[42px] lg:leading-[44px] xl:text-[56px] xl:leading-[58.6px] tracking-[-1px] md:tracking-[-2px] text-white font-medium whitespace-pre-line max-w-[743px] font-heading">
-                  {dict.projects.heading}
-                </h2>
-              </div>
+            <SectionHeader 
+  label={dict.projects.label}
+  heading={dict.projects.heading}
+  headingClassName="max-w-[743px] whitespace-pre-line"
+/>
+          
             </div>
             <div className="flex flex-col items-start gap-[10px] lg:shrink-0 w-full lg:w-1/3">
               <p className="whitespace-pre-line text-[#a3a3a3] text-sm md:text-base">

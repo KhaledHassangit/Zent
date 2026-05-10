@@ -6,6 +6,7 @@ import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import MotionDiv, { fadeInUp } from "@/util/MotionDiv";
+import { SectionHeader } from "@/util/SectionHeader";
 
 
 export default function FaqSection({ dict, locale }: LocaleSectionProps) {
@@ -28,13 +29,12 @@ export default function FaqSection({ dict, locale }: LocaleSectionProps) {
             {/* Left Side */}
             <div className="flex flex-col lg:flex-1 lg:min-w-0 lg:self-stretch">
                <div className="flex flex-col gap-3 lg:max-w-146.75 mb-8 lg:mb-10">
-                  <p className="text-[15.5px] font-medium leading-[19.2px] text-primary mb-1">{f.label}</p>
-                  <div className="lg:mb-6">
-                     <h2 className="text-[36px] leading-10.5 lg:text-[42px] lg:leading-11
-                      xl:text-[56px] xl:leading-[58.6px] tracking-[-1px] md:tracking-[-2px] text-white max-w-146.75 font-medium whitespace-normal font-heading">
-                        {f.heading}
-                     </h2>
-                  </div>
+               <SectionHeader 
+  label={f.label}
+  heading={f.heading}
+  containerClassName="lg:mb-6"
+  headingClassName="max-w-146.75 whitespace-normal"
+/>
                   <div
                      className="text-[#A3A3A3] w-full max-w-141.75"
                      style={{

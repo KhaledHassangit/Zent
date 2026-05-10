@@ -2,6 +2,7 @@ import Container from "@/util/Container";
 import MotionDiv, { fadeInUp } from "@/util/MotionDiv";
 import { CheckCheck, TrendingUp, ShieldCheck } from "lucide-react";
 import {SectionProps} from "@/types/types";
+import { SectionHeader } from "@/util/SectionHeader";
 
 const iconMap = {
    "trending-up": TrendingUp,
@@ -27,12 +28,11 @@ export default function WhySection({ dict }: SectionProps) {
             {/* Left Side */}
             <div className="flex min-w-0 flex-1 flex-col gap-[40px]">
                <div className="flex flex-col gap-[12px]">
-                  <p className="text-[15.5px] font-medium leading-[19.2px] text-primary">{w.label}</p>
-                  <div className="w-full">
-                     <h2 className="text-[36px] leading-[42px] lg:text-[42px] lg:leading-[44px] xl:text-[56px] xl:leading-[58.6px] tracking-[-1px] md:tracking-[-2px] text-white font-medium max-w-[587.18px] whitespace-pre-line font-heading">
-                        {w.heading}
-                     </h2>
-                  </div>
+              <SectionHeader 
+  label={w.label}
+  heading={w.heading}
+  headingClassName="max-w-[587.18px] whitespace-pre-line"
+/>
                   <p className="whitespace-pre-line text-[#a3a3a3] text-sm md:text-base">
                      {w.description}
                   </p>

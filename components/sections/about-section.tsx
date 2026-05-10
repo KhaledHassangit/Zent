@@ -4,6 +4,7 @@ import Image from "next/image";
 import MotionDiv, { fadeInUp } from "@/util/MotionDiv";
 import { SectionProps } from "@/types/types";
 import { FileDown, Group, UsersRound } from "lucide-react";
+import { SectionHeader } from "@/util/SectionHeader";
 
 
 export default function AboutSection({ dict }: SectionProps) {
@@ -33,24 +34,22 @@ export default function AboutSection({ dict }: SectionProps) {
           </div>
 
           <div className="relative z-10 flex flex-col gap-4">
-            <p className="text-[15.5px] font-medium leading-[19.2px] text-primary">{a.label}</p>
             <div className="w-full">
-              <h2
-                className="text-[36px] leading-10.5 lg:text-[42px] lg:leading-11 xl:text-[56px] xl:leading-[58.6px] tracking-[-1px] md:tracking-[-2px] text-white font-normal whitespace-pre-line font-heading"
-                style={{
-                  maxWidth: "100%",
-                  fontStyle: "normal",
-                  verticalAlign: "middle",
-                }}
-              >
-                {a.heading}
-              </h2>
+           <SectionHeader 
+  label={a.label}
+  heading={a.heading}
+  headingClassName="font-normal whitespace-pre-line max-w-[100%]"
+/>
             </div>
-            <a href="#" className="mt-px inline-flex w-fit items-center gap-2.25 rounded-[32px] border border-white/20 bg-white/20 backdrop-blur-[3px] hover:bg-white/30 transition-colors px-4.25 py-3.5">
-              <span className="text-base leading-[27.2px] text-white flex items-center gap-2">
-                {a.cta} <FileDown size={24} />
-              </span>
-            </a>
+         <a
+  href="#"
+  download
+  className="mt-px inline-flex w-fit items-center gap-2.25 rounded-[32px] border border-white/20 bg-white/20 backdrop-blur-[3px] hover:bg-white/30 transition-colors px-4.25 py-3.5"
+>
+  <span className="text-base leading-[27.2px] text-white flex items-center gap-2">
+    {a.cta} <FileDown size={24} />
+  </span>
+</a>
           </div>
 
           <div className="relative z-10 flex flex-col gap-4 md:flex-row md:gap-12 lg:flex-col lg:gap-8 xl:flex-row xl:gap-12">

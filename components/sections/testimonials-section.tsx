@@ -10,6 +10,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import type { LocaleSectionProps } from "@/types/types";
+import { SectionHeader } from "@/util/SectionHeader";
 
 export default function TestimonialsSection({ dict, locale }: LocaleSectionProps) {
   const t = dict.testimonials;
@@ -38,12 +39,12 @@ export default function TestimonialsSection({ dict, locale }: LocaleSectionProps
           />
         </div>
 
-        <span className="relative z-10 font-heading font-medium text-[15.5px] leading-[19.2px] tracking-[-1px] text-[#AAFF00] uppercase block">
-          {t.label}
-        </span>
-        <h2 className="relative z-10 font-heading font-normal text-[40px] md:text-[52px] leading-[55.6px] tracking-[-2px] text-white">
-          {t.heading}
-        </h2>
+      <SectionHeader 
+  label={t.label}
+  heading={t.heading}
+  labelClassName="text-[#AAFF00]"
+  headingClassName="!text-[40px] md:!text-[52px] !leading-[55.6px] font-normal relative z-10"
+/>
         <p className="relative z-10 font-heading font-normal text-[16px] leading-[21px] tracking-[-1px] text-[#A3A3A3]">
           {t.description}
         </p>
